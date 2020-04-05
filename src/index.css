@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font-family: 'Comic Neue', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: bold;
+  padding: 20px 60px
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+}
+
+*{
+  font-family: 'Liu Jian Mao Cao', cursive;
+}
