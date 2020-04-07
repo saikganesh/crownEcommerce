@@ -8,6 +8,8 @@ import CartDropdown from "../cartDropdown/CartDropdown"
 import {auth} from "../../firebase/firebaseUtils"
 
 import {connect} from "react-redux"
+import {selectCurrentUser} from "../../redux/user/userSelectors"
+import {createStructuredSelector} from "reselect"
  
 const Header = ({currentUser}) => {
 	return(
@@ -33,8 +35,8 @@ const Header = ({currentUser}) => {
 }
 
 
-const mapStateToProps= (rootReducerState) => ({
-	currentUser : rootReducerState.user.currentUser
+const mapStateToProps = createStructuredSelector({
+	currentUser : selectCurrentUser
 })
 
 
