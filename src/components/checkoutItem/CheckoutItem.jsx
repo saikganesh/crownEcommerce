@@ -18,7 +18,7 @@ const CheckoutItem = (props) => {
                 <div className="arrows" onClick ={() => props.item.quantity >= 10 ? null : props.dispatch(addItem(props.item)) } >
                     &#10095;</div>
             </div>
-            <div className="itemPrice">{props.item.quantity * props.item.price} </div>
+            <div className="itemPrice">₹{props.item.quantity * props.item.price} </div>
             <div className="removeButton" onClick={() => props.dispatch(deleteCartItem(props.item))}>&#10005;</div>
 
 

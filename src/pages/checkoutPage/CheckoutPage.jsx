@@ -33,7 +33,7 @@ const CheckoutPage = (props) => {
                     })
                 }
             <div style ={{height: "60px" , width : "100%"}}>
-                <span className="total"> TOTAL : ${props.cartTotal}</span>
+                <span className="total"> TOTAL : ₹{props.cartTotal}</span>
             </div>
             <div className="testPayment">
                 Use the following details for testing : 

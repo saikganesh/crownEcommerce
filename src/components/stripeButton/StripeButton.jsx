@@ -20,6 +20,7 @@ const StripeButton = (props) => {
         amount = {stripePrice}
         token = {onToken}
         stripeKey={publicApiKey}
+        currency="INR"
     />    
 }
 

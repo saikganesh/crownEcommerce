@@ -10,7 +10,7 @@ const CollectionItem = (props) => {
 			<div className="collectionImage" style={{backgroundImage : `url(${props.item.imageUrl})`}}></div>
 			<div className="collectionFooter">
 				<span>{props.item.name}</span>
-				<span>${props.item.price}</span>
+				<span>₹{props.item.price}</span>
 			</div>
 			<CustomButton isInverted={true} onClick={() =>  props.addItem(props.item)}>Add To Cart</CustomButton>
 		</div>
