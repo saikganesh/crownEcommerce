@@ -1,0 +1,13 @@
+.collectionPage{
+    width: 100%;
+
+    .collectionItems {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 20px;
+
+        .collectionItem{
+            width: 100%;;
+        }
+    }
+}

@@ -29,7 +29,7 @@ class App extends React.Component
 		    	<Header />
 		        <Switch>
 					 <Route exact={true} path="/" component={HomePage} />
-		        	 <Route exact={true} path="/shop" component={ShopPage} />
+		        	 <Route path="/shop" component={ShopPage} />
 		        	 <Route exact={true} path="/signIn" render={() => this.props.currentUser ? 
 		        	 					<Redirect to="/" /> : <SignInAndSignUpPage />} />
 					<Route exact path="/checkout" component={CheckoutPage}/>
@@ -40,15 +40,11 @@ class App extends React.Component
 
 	componentDidMount()
 	{
-		console.log(this.props)
 		this.unsubscribeFromAuth = auth.onAuthStateChanged( async userAuth => {
 			if(userAuth)
 			{
-				console.log("userAuth",userAuth)
 				const userRef =	await createUserProfileDocument(userAuth)
-				console.log("user ref",userRef)
 				userRef.onSnapshot(snapShot => {
-					console.log("snapshot",snapShot)
 					this.props.setCurrentUser({
 							id : snapShot.id,
 							...snapShot.data()
