@@ -23,7 +23,6 @@ class App extends React.Component
 
 	render()
 	{
-		console.log()
 		return (
 		    <div className="App">
 		    	<Header />
