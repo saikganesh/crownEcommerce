@@ -1,6 +1,7 @@
 import React from "react"
 import "./CheckoutPage.scss"
 import CheckoutItem from "../../components/checkoutItem/CheckoutItem"
+import StripeButton from "../../components/stripeButton/StripeButton"
 
 import {connect} from "react-redux"
 import {createStructuredSelector} from "reselect"
@@ -31,9 +32,17 @@ const CheckoutPage = (props) => {
                         return <CheckoutItem key={cartItem.id} item={cartItem}/>
                     })
                 }
-            <div>
+            <div style ={{height: "60px" , width : "100%"}}>
                 <span className="total"> TOTAL : ${props.cartTotal}</span>
             </div>
+            <div className="testPayment">
+                Use the following details for testing : 
+                   Num -  4242 4242 4242 4242
+                   Exp - 11/24
+                   CVC - 123
+            </div>
+            <StripeButton price={props.cartTotal} />
+
         </div>
     );
 }
