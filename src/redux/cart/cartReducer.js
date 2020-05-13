@@ -32,6 +32,12 @@ const cartReducer = (state=initialState,action) => {
 				...state,
 				cartItems : deleteCartItem(state.cartItems,action.payload)
 			}
+		
+		case cartActionTypes.emptyCart :
+			return {
+				...state,
+				cartItems : []
+			}
 
 		default:
 			return state

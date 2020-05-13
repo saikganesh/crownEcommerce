@@ -22,16 +22,18 @@
     color: black;
     border: 1px solid black;
   }
+  
 
   &.googleButton{
-    background-color: #4285f4
-  }
+    background-color: #4285f4;
 
-  &.googleButton:hover {
+
+  &:hover {
     background-color: #357ae8;
     color: white;
     border: none;
   }
+}
 
   &.invertedButton{
     background-color: white;

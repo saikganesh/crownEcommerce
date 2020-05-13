@@ -1,8 +1,10 @@
 .title {
 	cursor: pointer;
+
 }
 
 .preview{
-	display: flex;
-	justify-content: space-around;
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	grid-gap : 20px
 }

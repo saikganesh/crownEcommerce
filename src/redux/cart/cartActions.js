@@ -27,3 +27,9 @@ export const deleteCartItem = (item) => {
 	}
 }
 
+export const emptyCart = () => {
+	return{
+		type : cartActionTypes.emptyCart
+	}
+}
+

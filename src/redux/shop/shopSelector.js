@@ -9,10 +9,20 @@ export const collectionsSelector = createSelector(
 
 export const collectionPreviewSelector = createSelector(
     [collectionsSelector],
-    (collections) => Object.values(collections)
+    (collections) => collections ? Object.values(collections) : []
 )
 
 export const collectionSelector = (urlParam) => createSelector(
     [collectionsSelector],
-    (collections) => collections[urlParam]
+    (collections) => collections ? collections[urlParam] : null
+)
+
+export const isFetchingSelector = createSelector(
+    [shopSelector],
+    (shop) => shop.isFetching
+)
+
+export const isCollectionsLoadedSelector = createSelector(
+    [shopSelector],
+    (shop) => !!shop.collections
 )

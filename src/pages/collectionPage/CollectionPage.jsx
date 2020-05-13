@@ -6,7 +6,6 @@ import {collectionSelector} from "../../redux/shop/shopSelector"
 import {connect} from "react-redux"
 
 const CollectionPage = (props) => {
-	console.log(props.collection)
     return(
         <div className="collectionPage">
             <h1>{props.collection.title}</h1>
