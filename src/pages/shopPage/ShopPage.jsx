@@ -1,13 +1,15 @@
-import React from "react"
+import React,{lazy,Suspense} from "react"
 import "./ShopPage.scss"
 
-import CollectionsOverviewContainer from "../../components/collectionOverview/CollectionsOverviewContainer"
-import CollectionPageContainer from "../collectionPage/CollectionPageContainer" 
+import Spinner from "../../components/spinner/Spinner"
 
-import {Route} from "react-router-dom"
+import {Switch,Route} from "react-router-dom"
 
 import {connect} from "react-redux"
 import {fetchCollectionsStart} from "../../redux/shop/shopActions"
+
+const CollectionsOverviewContainer = lazy(() => import("../../components/collectionOverview/CollectionsOverviewContainer"))
+const CollectionPageContainer = lazy(() => import("../collectionPage/CollectionPageContainer"))
 
 class ShopPage extends React.Component
 {
@@ -16,10 +18,15 @@ class ShopPage extends React.Component
 
 	render()
 	{
+		throw new Error("Got crashed")
 		return(
 			<div className="shopPage">
-				<Route exact path={`${this.props.match.path}`} component={CollectionsOverviewContainer}/>
-				<Route exact path={`${this.props.match.path}/:collectionId`} component={CollectionPageContainer}/>
+				<Suspense fallback={Spinner}>
+					<Switch>
+						<Route exact path={`${this.props.match.path}`} component={CollectionsOverviewContainer}/>
+						<Route exact path={`${this.props.match.path}/:collectionId`} component={CollectionPageContainer}/>
+					</Switch>
+				</Suspense>
 			</div>
 		);
 	}
