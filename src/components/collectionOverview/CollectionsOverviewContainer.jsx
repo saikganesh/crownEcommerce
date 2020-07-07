@@ -6,7 +6,7 @@ import {connect} from "react-redux"
 import {createStructuredSelector} from "reselect"
 import {isFetchingSelector} from "../../redux/shop/shopSelector"
 
-import withSpinner from "../withSpinner/withSpinner"
+import withSpinner from "../withSpinner/WithSpinner"
 
 const mapStateToProps= createStructuredSelector({
     isLoading : isFetchingSelector

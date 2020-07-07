@@ -1,4 +1,4 @@
-import React,{lazy ,Suspense} from 'react';
+import React,{lazy ,Suspense,useEffect} from 'react';
 import './App.css';
 
 import Header from "./components/header/Header";
@@ -18,33 +18,27 @@ const ShopPage = lazy(() => import("./pages/shopPage/ShopPage"))
 const CheckoutPage = lazy(() => import("./pages/checkoutPage/CheckoutPage"))
 const SignInAndSignUpPage = lazy(() => import("./pages/signInAndSignUpPage/SignInAndSignUpPage"))
 
-class App extends React.Component 
-{
+const App = ({checkUserSessionStart,currentUser}) => {
 
-	render()
-	{
-		return (
-		    <div className="app">
-		    	<Header />
-				<Suspense fallback={<Spinner />}>
-					<ErrorBoundary>
-						<Switch>
-							<Route exact={true} path="/" component={HomePage} />
-							<Route path="/shop" component={ShopPage} />
-							<Route exact={true} path="/signIn" render={() => this.props.currentUser ? 
-												<Redirect to="/" /> : <SignInAndSignUpPage />} />
-							<Route exact path="/checkout" component={CheckoutPage}/>
-						</Switch>
-					</ErrorBoundary>
-				</Suspense>
-		    </div>
-		  );
-	}
+	useEffect(() => {
+		checkUserSessionStart()
+	},[checkUserSessionStart])
 
-	componentDidMount()
-	{
-		this.props.checkUserSessionStart()
-	}
+	return (
+		<div className="app">
+			<Header />
+			<Suspense fallback={<Spinner />}>
+				<ErrorBoundary>
+					<Switch>
+						<Route exact={true} path="/" component={HomePage} />
+						<Route path="/shop" component={ShopPage} />
+						<Route exact={true} path="/signIn" render={() => currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />} />
+						<Route exact path="/checkout" component={CheckoutPage}/>
+					</Switch>
+				</ErrorBoundary>
+			</Suspense>
+		</div>
+	);
 
 	
 }

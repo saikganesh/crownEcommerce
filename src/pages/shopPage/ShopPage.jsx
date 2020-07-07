@@ -1,4 +1,4 @@
-import React,{lazy,Suspense} from "react"
+import React,{lazy,Suspense,useEffect} from "react"
 import "./ShopPage.scss"
 
 import Spinner from "../../components/spinner/Spinner"
@@ -11,30 +11,22 @@ import {fetchCollectionsStart} from "../../redux/shop/shopActions"
 const CollectionsOverviewContainer = lazy(() => import("../../components/collectionOverview/CollectionsOverviewContainer"))
 const CollectionPageContainer = lazy(() => import("../collectionPage/CollectionPageContainer"))
 
-class ShopPage extends React.Component
-{
+const ShopPage = ({fetchCollectionsStart,match : {path}}) => {
 
-	unSubscribeFromAuth = null
+	useEffect(() => {
+		fetchCollectionsStart()
+	},[fetchCollectionsStart])
 
-	render()
-	{
-		throw new Error("Got crashed")
-		return(
-			<div className="shopPage">
-				<Suspense fallback={Spinner}>
-					<Switch>
-						<Route exact path={`${this.props.match.path}`} component={CollectionsOverviewContainer}/>
-						<Route exact path={`${this.props.match.path}/:collectionId`} component={CollectionPageContainer}/>
-					</Switch>
-				</Suspense>
-			</div>
-		);
-	}
-
-	componentDidMount()
-	{
-		this.props.fetchCollectionsStart()
-	}
+	return (
+		<div className="shopPage">
+			<Suspense fallback={Spinner}>
+				<Switch>
+					<Route exact path={`${path}`} component={CollectionsOverviewContainer}/>
+					<Route exact path={`${path}/:collectionId`} component={CollectionPageContainer}/>
+				</Switch>
+			</Suspense>
+		</div>
+	);
 
 } 
 
@@ -43,4 +35,4 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-export default  connect(null,mapDispatchToProps)(ShopPage)
+export default connect(null,mapDispatchToProps)(ShopPage)
