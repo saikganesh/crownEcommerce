@@ -10,6 +10,7 @@ const shopReducer = (state=initialState,action) => {
     switch(action.type)
     {
         case shopTypes.fetchCollectionsStart :
+            console.log('reducer updated')
             return {
                 ...state,
                 isFetching : true

@@ -1,8 +1,11 @@
 import shopTypes from "./shopTypes"
 
-export const fetchCollectionsStart = () => ({
-    type : shopTypes.fetchCollectionsStart,
-})
+export const fetchCollectionsStart = () => {
+    console.log('Action fired')
+    return {
+        type : shopTypes.fetchCollectionsStart,
+    }
+}
 
 export const fetchCollectionsSuccess = (collectionsMap) => ({
     type : shopTypes.fetchCollectionsSuccess,

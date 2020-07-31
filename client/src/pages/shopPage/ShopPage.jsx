@@ -14,6 +14,7 @@ const CollectionPageContainer = lazy(() => import("../collectionPage/CollectionP
 const ShopPage = ({fetchCollectionsStart,match : {path}}) => {
 
 	useEffect(() => {
+		console.log('shop page mounted')
 		fetchCollectionsStart()
 	},[fetchCollectionsStart])
 

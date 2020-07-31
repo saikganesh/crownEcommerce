@@ -7,6 +7,7 @@ import {firestore,convertCollectionSnapshotToMap} from "../../firebase/firebaseU
 import {fetchCollectionsSuccess,fetchCollectionsFailure} from "./shopActions"
 
 function* fetchCollectionsAsync() {
+    console.log('Saga fired')
     try 
     {
         const collectionsRef = yield firestore.collection("collections")
@@ -21,10 +22,7 @@ function* fetchCollectionsAsync() {
 }
 
 export function* fetchCollectionsStart(){
-    yield takeLatest(
-        shopTypes.fetchCollectionsStart,
-        fetchCollectionsAsync
-    )
+    yield takeLatest(shopTypes.fetchCollectionsStart,fetchCollectionsAsync)
 }
 
 export function* shopSagas()
