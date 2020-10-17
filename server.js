@@ -5,37 +5,36 @@ const path = require('path')
 
 if (process.env.Node_ENV !== 'production') 
 {
-    require('dotenv').config() // environment variables are accesible only in development and testing and adds to node environment
+    require('dotenv').config() 
 }
 
 
-// using stripe to access the secret key from node environment
 const stripe = require('stripe')(process.env.stripeSecretKey) 
 
 const app = express()
-const port = process.env.PORT || 5000 // if port assigned we use it or set it to 5000
+const port = process.env.PORT || 5000 
 
-app.use(bodyParser.json()) // parse any request's body to object from JSON
-app.use(bodyParser.urlencoded({extended : true})) // filter out unnecessary symbols and spaces from request URL
-app.use(cors()) // deny request from any other source to server 
+app.use(bodyParser.json()) 
+app.use(bodyParser.urlencoded({extended : true})) 
+app.use(cors()) 
 
 if(process.env.Node_ENV === 'production')
 {
-    // builds static files needed when user hits the frontend (bundled html,css and js files)
+    
     app.use(express.static(path.join(__dirname,'client/build')))
     
-    // send the static files to user when they hit URL
+    
     app.get('*',(req,res)=>{
         res.sendFile(path.join(__dirname,'client/build','index.html')) 
     })
 }
 
-app.listen(port,error => { // listening to assigned port
+app.listen(port,error => {
     if(error) throw error
     console.log('Listening on port '+ port)
 })
 
-app.post('/payment',(req,res)=>{ //handle the payment request
+app.post('/payment',(req,res)=>{
     const body = {
         source : req.body.token.id,
         amount : req.body.amount,
