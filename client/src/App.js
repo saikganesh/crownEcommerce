@@ -11,6 +11,7 @@ import ErrorBoundary from "./components/errorBoundary/ErrorBoundary"
 import {connect} from "react-redux"
 import {selectCurrentUser} from "./redux/user/userSelectors"
 import {createStructuredSelector} from "reselect"
+
 import {checkUserSessionStart} from "./redux/user/userActions"
 
 const HomePage = lazy(() => import("./pages/homePage/HomePage"))
